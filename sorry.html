@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I’m Truly Sorry 💔</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --primary-color: #ff4d6d; /* Soft red for accents */
+      --secondary-color: #f0f0f0; /* Light gray for text */
+      --background-dark: #0a0a0a;
+      --background-light: #1a1a1a;
+      --font-heading: 'Great Vibes', cursive;
+      --font-body: 'Poppins', sans-serif;
+      --font-script: 'Dancing Script', cursive;
+      --font-mono: 'Roboto Mono', monospace;
+      --box-shadow-light: rgba(255, 255, 255, 0.08);
+      --blur-strength: 12px;
+      --transition-speed: 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background-dark);
+      overflow-x: hidden;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      color: var(--secondary-color);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      -webkit-tap-highlight-color: transparent;
+      padding: 20px; /* Add some padding for smaller screens */
+    }
+
+    /* SVG Background - Enhanced */
+    .svg-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -2; /* Placed further back */
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevent scroll issues */
+    }
+
+    .svg-bg path {
+      animation: svgWave 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes svgWave {
+      0% {
+        transform: scaleY(1);
+      }
+      100% {
+        transform: scaleY(1.05);
+      }
+    }
+
+    /* Text Animations - Refined */
+    .text-container {
+      position: relative;
+      height: 100vh; /* Full viewport height for text sequence */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text {
+      font-size: clamp(1.8rem, 5vw, 3rem); /* Responsive font size */
+      position: absolute;
+      opacity: 0;
+      animation: fadeInOut 4s ease forwards; /* All texts use this animation */
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Softer shadow */
+      padding: 0 15px; /* Add padding to prevent text from touching edges */
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+      10% { opacity: 1; transform: translateY(0) scale(1); }
+      90% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-20px) scale(1.05); }
+    }
+
+    /* Adjusted delays for the full sequence */
+    .text1 { animation-delay: 0s; font-family: var(--font-heading); color: var(--primary-color); }
+    .text2 { animation-delay: 4s; font-family: var(--font-mono); }
+    .text3 { animation-delay: 8s; font-family: var(--font-body); font-weight: 600; }
+    .text4 { animation-delay: 12s; font-family: var(--font-script); color: var(--primary-color); }
+    .text5 { animation-delay: 16s; font-family: var(--font-body); font-weight: 700; }
+    .sorry-final { animation-delay: 20s; font-family: var(--font-heading); color: var(--primary-color); text-shadow: 0 0 15px rgba(255, 77, 109, 0.8); }
+    .love-final { animation-delay: 24s; font-family: var(--font-script); } /* Slightly delayed for more impact */
+
+
+    /* Heart Button - Interactive & Stylish */
+    .heart-button {
+      opacity: 0;
+      margin-top: 20vh; /* Adjust margin based on content flow */
+      animation: showBtn 1s ease 28s forwards; /* Adjusted delay for after all messages */
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: clamp(2rem, 5vw, 3rem);
+      width: clamp(60px, 15vw, 90px);
+      height: clamp(60px, 15vw, 90px);
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--primary-color);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative; /* For pulse effect */
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .heart-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    .heart-button:hover::before {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { width: 0; height: 0; opacity: 0.5; }
+      100% { width: 100%; height: 100%; opacity: 0; }
+    }
+
+    .heart-button:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 30px var(--primary-color);
+    }
+
+    @keyframes showBtn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Falling Hearts - Dynamic */
+    .heart {
+      position: fixed;
+      color: var(--primary-color);
+      font-size: clamp(18px, 4vw, 32px);
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px pink);
+      animation: fall 3s linear forwards;
+      z-index: -1; /* Ensure hearts are behind content */
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Message Boxes - Modern & Accessible */
+    .msg-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      background: rgba(26, 26, 26, 0.85); /* Slightly darker background */
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      display: none;
+      backdrop-filter: blur(var(--blur-strength));
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+      box-shadow: 0 10px 30px var(--box-shadow-light);
+      width: 90%;
+      max-width: 450px;
+      animation: fadeInScale 0.5s ease forwards;
+      opacity: 0; /* Initial state for animation */
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .msg-box img {
+      width: 100%;
+      max-height: 200px; /* Slightly taller */
+      border-radius: 10px; /* Softer corners */
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .msg-box h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px rgba(255, 77, 109, 0.5);
+    }
+
+    .msg-box p {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--secondary-color);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .msg-box .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px; /* Space between buttons */
+      flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    }
+
+    .action-btn {
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-speed);
+      text-decoration: none;
+      display: inline-flex; /* For better icon alignment */
+      align-items: center;
+      gap: 8px; /* Space between text and icon */
+      font-weight: 600;
+    }
+
+    .call-btn {
+      background: transparent;
+      color: var(--secondary-color);
+      border: 2px solid var(--secondary-color);
+    }
+
+    .call-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .insta-btn {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4);
+    }
+
+    .insta-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(225, 48, 108, 0.6);
+    }
+/* Footer - Elegant & Interactive */
+.footer {
+  /* Change 'bottom: 20px;' to a slightly larger value */
+  bottom: 40px; /* Increased from 20px for more clearance */
+  
+  position: absolute;
+  font-size: 0.95rem;
+  color: #888;
+  font-family: var(--font-body);
+  z-index: 5; /* Ensure it's above background but below modals */
+  width: 100%; /* Ensure it spans full width for centering */
+  text-align: center; /* Center the text */
+}
+
+/* No changes needed for .footer span */
+.footer span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding-left: 5px;
+  transition: all var(--transition-speed);
+}
+
+.footer span:hover {
+  text-decoration: underline;
+  color: #ff8080;
+  transform: translateY(-2px);
+}
+    /* Backdrop for Modals */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .text {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+      }
+
+      .sorry-final, .love-final {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+
+      .heart-button {
+        width: clamp(50px, 18vw, 80px);
+        height: clamp(50px, 18vw, 80px);
+      }
+
+      .msg-box {
+        padding: 25px;
+      }
+
+      .msg-box h2 {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+      }
+
+      .msg-box p {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .msg-box .button-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <svg class="svg-bg" viewBox="0 0 1440 320">
+    <path fill="#1a1a1a" fill-opacity="1" d="M0,256L60,218.7C120,181,240,107,360,112C480,117,600,203,720,224C840,245,960,203,1080,176C1200,149,1320,139,1380,133.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+  </svg>
+
+  <div class="text-container">
+    <div class="text text1">I know I hurt you... 😔</div>
+    <div class="text text2">Tere bina sab kuch bejaan lagta hai... 💭</div>
+    <div class="text text3">Main waapas sab theek karna chahta hoon... 🙏</div>
+    <div class="text text4">Please mujhe maaf kar do... 🥺</div>
+    <div class="text text5">Tum meri sabse pyaari galti ho... ❤️</div>
+
+    <div class="text sorry-final">I'm Sorry... 💔</div>
+    <div class="text love-final">And... I Love You ❤️</div>
+
+    <button class="heart-button" onclick="dropHeartsAndShowMsg()">❤️</button>
+  </div>
+
+
+  <div class="msg-box" id="messageBox">
+    <h2>Thank You for smiling again 💖</h2>
+    <p>Main sach mein tumse bohot pyaar karta hoon...<br>Agar thoda bhi pighal gayi ho toh... call kar lena 🥺</p>
+    <div class="button-group">
+      <a href="tel:+919876543210" class="action-btn call-btn"><i class="fas fa-phone-alt"></i> Call Me</a>
+    </div>
+  </div>
+
+  <div class="msg-box" id="photoBox" style="display: none;">
+    <img src="IMG_20250709_234446_566.jpg" alt="Developer Photo"> <h2>Hello! I'm Aakash ✨</h2>
+    <p>Thanks for visiting my creation 💻<br>Follow me for more ❤️</p>
+    <div class="button-group">
+      <a href="https://www.instagram.com/obito.editx.0?igsh=MXQyemtkanpiMzJnbA==" class="action-btn insta-btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></div><br />
+       <div class="button-group">
+      <a href="https://www.instagram.com/urfav_pritam?igsh=MXQyemtkanpiMzJnbA==" class="action-btn insta-btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      
+    </div>
+  </div>
+
+  <div class="footer">
+    Made with ❤️ by <span onclick="showPhotoBox()">Aakash</span>
+  </div>
+
+  <script>
+    const messageBox = document.getElementById("messageBox");
+    const photoBox = document.getElementById("photoBox");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+
+    function showModal(modalElement) {
+      modalBackdrop.classList.add('show');
+      modalElement.style.display = "block";
+      // Optional: Add a class to the modal for animation (e.g., 'show-modal')
+    }
+
+    function hideModal(modalElement) {
+      modalBackdrop.classList.remove('show');
+      modalElement.style.display = "none";
+      // Optional: Remove animation class
+    }
+
+    modalBackdrop.addEventListener('click', () => {
+      if (messageBox.style.display === "block") {
+        hideModal(messageBox);
+      }
+      if (photoBox.style.display === "block") {
+        hideModal(photoBox);
+      }
+    });
+
+
+    function dropHeartsAndShowMsg() {
+      let count = 0;
+      const interval = setInterval(() => {
+        if (count >= 30) {
+          clearInterval(interval);
+          showModal(messageBox);
+          return;
+        }
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = '💖'; // Using a more vibrant emoji
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '-50px';
+        heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+        count++;
+      }, 150);
+    }
+
+    function showPhotoBox() {
+      showModal(photoBox);
+
+      // Close on outside click is handled by modalBackdrop now.
+      // We still need to ensure clicking "Aakash" doesn't immediately close if another modal is open.
+      // This is handled by the `if` checks in the modalBackdrop event listener.
+    }
+  </script>
+
+</body>
+</html>
